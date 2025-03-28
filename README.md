@@ -133,7 +133,7 @@ The most revealing and distinguishing features for each cluster were:
   - The play time
   - The average rating
   - The popularity (wishing count and wanting count)
-  - 
+    
 </br></br>
 Here is our interpretation of each cluster:
 
