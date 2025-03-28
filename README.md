@@ -99,7 +99,6 @@ Here are the columns that were used with the KMeans model.
 
 | Column       |
 |--------------- |
-| min_players    |
 | max_players    |
 | minplaytime    |
 | maxplaytime    |
