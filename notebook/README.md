@@ -1,6 +1,6 @@
 # NLP and Clustering of Board Games and their Reviews 
 
-## Objective
+### Objective
 
 1. Retrieve a dataset through an API.
 
@@ -127,6 +127,15 @@ Here is the distribution of the 8 clusters.
 ---
 ### Results
 
+The most revealing and distinguishing features for each cluster were:
+
+  - The audience's age
+  - The play time
+  - The average rating
+  - The popularity (wishing count and wanting count)
+  - 
+</br></br>
+Here is our interpretation of each cluster:
 
 | Cluster | Interpretation for Games| Cluster | Interpretation for Games|
 | :---------: |----------------| :---------: |----------------|
@@ -138,10 +147,14 @@ Here is the distribution of the 8 clusters.
 </br></br>
 Principal Component Analysis was used to reduce our dataset to 2 dimension for visualisation.
 
+As indicated on the graph, the cluster can be used to generalize a game audience's age and its popularity.
+
 ![](graph/PCA_2d_comments.png)
 
 
 </br></br>
+
+
 
 
 
