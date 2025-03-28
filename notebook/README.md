@@ -87,15 +87,41 @@ What might explain the overall poor performance of the BERT Sentiment NLP is tha
 ---
 ### Step 4 : Clustering with KMeans
 
+To simplify the clustering model and get a minimal amount of clusters to analyze, we only used the numerical columns of the dataset.
 
+Here are the columns that were used with the KMeans model.
 
+| Column       |
+|--------------- |
+| min_players    |
+| max_players    |
+| minplaytime    |
+| maxplaytime    |
+| age            |
+| ratings_avg    |
+| count_wanting  |
+| count_wishing  |
+| Sentiment      |
 
+Here is the Elbow Analysis perform on the dataset, to find the right K values. 
+
+![](graph/ElbowKmeans.png)
+
+The KMeans model was used with a K value of eight. Thus, returning 8 clusters for our dataset to analyze further. 
+
+Here is the distribution of the 8 clusters.
+
+![](graph/Distribution_Cluster.png)
 
 
 </br></br></br>
 <center>
     
 #### Results
+
+![](graph/PCA_2d_comments)
+
+Principal Component Analysis for used to reduce our dataset to 2D 
 
 | Cluster | Interpretation for Games| Cluster | Interpretation for Games|
 | :---------: |----------------| :---------: |----------------|
