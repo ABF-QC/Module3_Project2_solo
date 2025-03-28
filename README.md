@@ -36,6 +36,7 @@ Here is the various information retrieved with the API:
 | **Wishing Count** | 
 | **Description** | 
 | **Categories** | 
+
 </br></br>
 The retrieved data can be found here [Dataset](data/games_comments.csv)
 
@@ -47,6 +48,7 @@ Data cleaning is crucial for data analysis. The cleaned data can be found here [
 1. Missing values will be replaced or discarded.
 2. A language column will be created based on the language used for the comment.
 </br></br>
+
 ---
 ### Step 2 : Data Analysis
 
@@ -59,6 +61,7 @@ Data Analysis is necessary to understand
 of the various information available in the dataset.
 
 </br></br>
+
 ---
 ### Step 3 : NLP - BERT Sentiment
 
@@ -120,7 +123,8 @@ Here is the distribution of the 8 clusters.
 
 </br></br></br>
 <center>
-    
+
+---
 ### Results
 
 
