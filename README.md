@@ -1,27 +1,148 @@
-# NLP Project
+# NLP and Clustering of Board Games and their Reviews 
 
-In this project, you are expected to perform NLP on an online dataset that you will obtain from an API or scraping.
+## Objective
 
-This is an open-ended project, and you can be creative!
+1. Retrieve a dataset through an API.
 
-### Requirements:
-- Obtain data from an API or web-scraping. No premade datasets from Kaggle!
-- You are epxected to work on some form of **text data**.
-- Your goal is to uncover underlying clusters (social communities, market patters) etc., using unsupervised learning.
-- You can use any method; clustering, sentiment analysis, dimensionality reduction, pretrained models, word-embeddings, network embeddings, etc.
-- Create a visualization in 2d or 3d of the data with the clusters you found tagged. See reddit example below.
-- Analyze the produced clusters and use them to provide a short explanation of what you found.
+2. Apply a Natural Language Processing (NLP) model on the dataset.
 
-Reddit example visualization:
+3. Use a clustering model to group the data.
 
-![](reddit.png)
+4. Analyze the resulting clusters.
 
-**You don't have to do it at a large scale**
+5. Draw conclusions based on the interpretation of the clusters.
 
-The data for these sort of projects can run very large if you let them, making the enterprise difficult.
 
-You can limit yourself to samples of the communities you're looking at rather than the entire thing.
+### Data source
 
-Please focus on exploring multiple techniques, understanding which ones would be most applicable, and interpreting the final results.
+Board games reviews and information will be retrieved from the website https://boardgamegeek.com/ from an [API](https://boardgamegeek.com/xmlapi) .
 
-### Good Luck!
+Here is the various information retrieved with the API:
+
+| Game information retrieved      | 
+|---------------|
+| **Username** |
+| **Rating** |
+| **Comment**|
+| **Game Name** | 
+| **Mechanics** | 
+| **Min Players** | 
+| **Max Players** | 
+| **Min Playtime** | 
+| **Max Playtime** | 
+| **Age** | 
+| **Average Rating** | 
+| **Wanting Count** | 
+| **Wishing Count** | 
+| **Description** | 
+| **Categories** | 
+
+The retrieved data can be found here [Dataset](data/games_comments.csv)
+
+---
+### Step 1: Data Cleaning,
+
+Data cleaning is crucial for data analysis. The cleaned data can be found here [Cleaned Dataset](data/games_comments_clean.csv)
+
+1. Missing values will be replaced or discarded.
+2. A language column will be created based on the language used for the comment.
+
+---
+### Step 2 : Data Analysis
+
+Data Analysis is necessary to understand 
+   - the dataset
+   - the various trends
+   - the distribution
+   - the range
+     
+of the various information available in the dataset.
+
+
+---
+### Step 3 : NLP - BERT Sentiment
+
+A NLP model, most precisely BERT - Sentiment, will be used to convert the comments to a rating score from 1 to 10.
+
+The new produce Sentiment rating will be useful, since 25% of users did not provide a rating along with their comment.
+
+Some other NLP were tested as well
+  - NLP Summarization model (BERT Summarizer)
+  - NLP Summarization model (BART Summarizer)
+  - NLP keywords model (KeyBERT Sentence Transformer)
+
+However, due to a lack of time no further investigation was done on those three additional NLP.
+</br></br>
+The data with the added Sentiment rating can be found here [Dataset with Sentiment](data/games_comments_sentiment_summarized.csv) 
+
+</br></br>
+Here is an overview of the performance of the BERT Sentiment NLP in comparison to the available ratings.
+
+![](graph/Class_report.png)
+</br></br>
+Here is an overview of the distribution of the BERT Sentiment NLP in comparison to the available ratings.
+
+![](graph/SentimentvsRating.png)
+
+What might explain the overall poor performance of the BERT Sentiment NLP is that the usual rating is from 1 to 5. However, the rating of the board game site range from 1 to 10. Therefore, we are not comparing apples with apples here.
+
+---
+### Step 4 : Clustering with KMeans
+
+To simplify the clustering model and get a minimal amount of clusters to analyze, we only used the numerical columns of the dataset.
+
+Here are the columns that were used with the KMeans model.
+
+| Column       |
+|--------------- |
+| min_players    |
+| max_players    |
+| minplaytime    |
+| maxplaytime    |
+| age            |
+| ratings_avg    |
+| count_wanting  |
+| count_wishing  |
+| Sentiment      |
+</br></br>
+Here is the Elbow Analysis perform on the dataset, to find the right K values. 
+
+![](graph/ElbowKmeans.png)
+</br></br>
+The KMeans model was used with a K value of eight. Thus, returning 8 clusters for our dataset to analyze further. 
+</br></br>
+Here is the distribution of the 8 clusters.
+
+![](graph/Distribution_Cluster.png)
+
+
+</br></br></br>
+<center>
+    
+### Results
+
+
+| Cluster | Interpretation for Games| Cluster | Interpretation for Games|
+| :---------: |----------------| :---------: |----------------|
+| 0       | - Pre-teens</br>- Short play time</br>- Low to high ratings</br>- Average popularity               | 4       | - Teens & Adults</br>- Short to long play time</br>- High ratings</br>- Average popularity                |
+| 1       | - Teens & Adults </br>- Moderate play time</br>- Moderate ratings</br>- Low popularity                | 5       | - Teens & Adults</br>- Long play time</br>- High ratings</br>- Highest popularity                 |
+| 2       | - Pre-teens</br>- Moderate play time</br>- Moderate ratings</br>- High popularity                | 6       | - Mid-Teens & Adults</br>- Longest play time</br>- Highest ratings</br>- Low popularity                |
+| 3       | - Kids</br>- Very short play time</br>- Low ratings</br>- Unpopular                | 7       | - Teens & Adults</br>- Moderate play time</br>- Low to high ratings</br>- Lowest popularity                |
+
+</br></br>
+Principal Component Analysis was used to reduce our dataset to 2 dimension for visualisation.
+
+![](graph/PCA_2d_comments)
+
+
+</br></br>
+
+
+
+
+    
+
+
+
+
+
