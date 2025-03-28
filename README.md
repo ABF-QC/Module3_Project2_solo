@@ -11,12 +11,12 @@
 4. Analyze the resulting clusters.
 
 5. Draw conclusions based on the interpretation of the clusters.
-
-
+</br></br>
+---
 ### Data source
 
 Board games reviews and information will be retrieved from the website https://boardgamegeek.com/ from an [API](https://boardgamegeek.com/xmlapi) .
-
+</br></br>
 Here is the various information retrieved with the API:
 
 | Game information retrieved      | 
@@ -36,7 +36,7 @@ Here is the various information retrieved with the API:
 | **Wishing Count** | 
 | **Description** | 
 | **Categories** | 
-
+</br></br>
 The retrieved data can be found here [Dataset](data/games_comments.csv)
 
 ---
@@ -46,7 +46,7 @@ Data cleaning is crucial for data analysis. The cleaned data can be found here [
 
 1. Missing values will be replaced or discarded.
 2. A language column will be created based on the language used for the comment.
-
+</br></br>
 ---
 ### Step 2 : Data Analysis
 
@@ -58,14 +58,14 @@ Data Analysis is necessary to understand
      
 of the various information available in the dataset.
 
-
+</br></br>
 ---
 ### Step 3 : NLP - BERT Sentiment
 
 A NLP model, most precisely BERT - Sentiment, will be used to convert the comments to a rating score from 1 to 10.
-
+</br></br>
 The new produce Sentiment rating will be useful, since 25% of users did not provide a rating along with their comment.
-
+</br></br>
 Some other NLP were tested as well
   - NLP Summarization model (BERT Summarizer)
   - NLP Summarization model (BART Summarizer)
@@ -85,12 +85,13 @@ Here is an overview of the distribution of the BERT Sentiment NLP in comparison 
 ![](graph/SentimentvsRating.png)
 
 What might explain the overall poor performance of the BERT Sentiment NLP is that the usual rating is from 1 to 5. However, the rating of the board game site range from 1 to 10. Therefore, we are not comparing apples with apples here.
+</br></br>
 
 ---
 ### Step 4 : Clustering with KMeans
 
 To simplify the clustering model and get a minimal amount of clusters to analyze, we only used the numerical columns of the dataset.
-
+</br></br>
 Here are the columns that were used with the KMeans model.
 
 | Column       |
@@ -104,6 +105,7 @@ Here are the columns that were used with the KMeans model.
 | count_wanting  |
 | count_wishing  |
 | Sentiment      |
+
 </br></br>
 Here is the Elbow Analysis perform on the dataset, to find the right K values. 
 
@@ -132,7 +134,7 @@ Here is the distribution of the 8 clusters.
 </br></br>
 Principal Component Analysis was used to reduce our dataset to 2 dimension for visualisation.
 
-![](graph/PCA_2d_comments)
+![](graph/PCA_2d_comments.png)
 
 
 </br></br>
