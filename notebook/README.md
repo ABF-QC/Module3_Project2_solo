@@ -1,4 +1,4 @@
-# Classification model - Predicting if a client will be leaving the telecom company
+# NLP and Clustering of Board Games and their Reviews 
 
 ## Objective
 
@@ -62,22 +62,24 @@ of the various information available in the dataset.
 ---
 ### Step 3 : NLP - BERT Sentiment
 
-A Natural Language Processing (NLP) model, most precisely BERT - Sentiment, will be used to convert the comments to a rating score from 1 to 10.
+A NLP model, most precisely BERT - Sentiment, will be used to convert the comments to a rating score from 1 to 10.
 
 The new produce Sentiment rating will be useful, since 25% of users did not provide a rating along with their comment.
 
 Some other NLP were tested as well
   - NLP Summarization model (BERT Summarizer)
-  - NLP keywords model (KeyBERT)
+  - NLP Summarization model (BART Summarizer)
+  - NLP keywords model (KeyBERT Sentence Transformer)
 
-However, due to a lack of time no further investigation was done on those two additional NLP.
-
+However, due to a lack of time no further investigation was done on those three additional NLP.
+</br></br>
 The data with the added Sentiment rating can be found here [Dataset with Sentiment](data/games_comments_sentiment_summarized.csv) 
 
+</br></br>
 Here is an overview of the performance of the BERT Sentiment NLP in comparison to the available ratings.
 
 ![](graph/Class_report.png)
-
+</br></br>
 Here is an overview of the distribution of the BERT Sentiment NLP in comparison to the available ratings.
 
 ![](graph/SentimentvsRating.png)
@@ -102,13 +104,13 @@ Here are the columns that were used with the KMeans model.
 | count_wanting  |
 | count_wishing  |
 | Sentiment      |
-
+</br></br>
 Here is the Elbow Analysis perform on the dataset, to find the right K values. 
 
 ![](graph/ElbowKmeans.png)
-
+</br></br>
 The KMeans model was used with a K value of eight. Thus, returning 8 clusters for our dataset to analyze further. 
-
+</br></br>
 Here is the distribution of the 8 clusters.
 
 ![](graph/Distribution_Cluster.png)
@@ -117,11 +119,8 @@ Here is the distribution of the 8 clusters.
 </br></br></br>
 <center>
     
-#### Results
+### Results
 
-![](graph/PCA_2d_comments)
-
-Principal Component Analysis for used to reduce our dataset to 2D 
 
 | Cluster | Interpretation for Games| Cluster | Interpretation for Games|
 | :---------: |----------------| :---------: |----------------|
@@ -129,6 +128,11 @@ Principal Component Analysis for used to reduce our dataset to 2D
 | 1       | - Teens & Adults </br>- Moderate play time</br>- Moderate ratings</br>- Low popularity                | 5       | - Teens & Adults</br>- Long play time</br>- High ratings</br>- Highest popularity                 |
 | 2       | - Pre-teens</br>- Moderate play time</br>- Moderate ratings</br>- High popularity                | 6       | - Mid-Teens & Adults</br>- Longest play time</br>- Highest ratings</br>- Low popularity                |
 | 3       | - Kids</br>- Very short play time</br>- Low ratings</br>- Unpopular                | 7       | - Teens & Adults</br>- Moderate play time</br>- Low to high ratings</br>- Lowest popularity                |
+
+</br></br>
+Principal Component Analysis was used to reduce our dataset to 2 dimension for visualisation.
+
+![](graph/PCA_2d_comments)
 
 
 </br></br>
